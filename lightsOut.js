@@ -153,6 +153,8 @@ function reset() {
 
 //ヒントボタンの動作
 function hint() {
+  //ヒントボタンを非活性化
+  hintButton.disabled = true;
   //答えの重複を無くす
   hints = Array.from(new Set(hints));
   for (let i = 0; i < hints.length; i++){
