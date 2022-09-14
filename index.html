@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://kit.fontawesome.com/dc9df6b518.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <title>Light Outをやってみよう!</title>
+</head>
+
+<body>
+  <div class="option">
+    <div class="title">
+        <p>
+          Lights Out<i class="fa-regular fa-lightbulb"></i>をやってみよう!
+        </p>
+    </div>
+    <div class="rule">
+      <p><span class="bold">～ルール説明～</span><br>
+        開始ボタンを押すとランダムで何個かライトが点灯します。<br>
+        あるライトを押すと、自身とその上下左右のライトが反転します。<br>
+        全てのライトを消すことが出来たらクリア!
+      </p>
+    </div>
+    <div class="hintOption">
+      <p>※ヒントボタンを押すと・・・？</p>
+    </div>
+  </div>
+
+
+  <div id="timer">00:00.000</div>
+  <select id="level">
+    <option value="hard">上級</option>
+    <option value="normal" selected>中級</option>
+    <option value="easy">初級</option>
+  </select>
+
+
+  <div class="gameTable">
+    <table border="1">
+      <tr>
+        <td><input type="checkbox" class="light" value="0"></td>
+        <td><input type="checkbox" class="light" value="1"></td>
+        <td><input type="checkbox" class="light" value="2"></td>
+        <td><input type="checkbox" class="light" value="3"></td>
+        <td><input type="checkbox" class="light" value="4"></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="light" value="5"></td>
+        <td><input type="checkbox" class="light" value="6"></td>
+        <td><input type="checkbox" class="light" value="7"></td>
+        <td><input type="checkbox" class="light" value="8"></td>
+        <td><input type="checkbox" class="light" value="9"></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="light" value="10"></td>
+        <td><input type="checkbox" class="light" value="11"></td>
+        <td><input type="checkbox" class="light" value="12"></td>
+        <td><input type="checkbox" class="light" value="13"></td>
+        <td><input type="checkbox" class="light" value="14"></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="light" value="15"></td>
+        <td><input type="checkbox" class="light" value="16"></td>
+        <td><input type="checkbox" class="light" value="17"></td>
+        <td><input type="checkbox" class="light" value="18"></td>
+        <td><input type="checkbox" class="light" value="19"></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="light" value="20"></td>
+        <td><input type="checkbox" class="light" value="21"></td>
+        <td><input type="checkbox" class="light" value="22"></td>
+        <td><input type="checkbox" class="light" value="23"></td>
+        <td><input type="checkbox" class="light" value="24"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="button">
+    <button type="submit" value="start" onclick="start()" id ="start">
+      <i class="fa-solid fa-play"></i>開始
+    </button>
+
+    <button type="submit" onclick="hint()" id="hint">
+      <i class="fa-solid fa-lightbulb"></i>ヒント
+    </button>
+    <br>
+    <button type="submit" onclick="reset()" id="reset">
+      <i class="fa-solid fa-rotate-right"></i>最初から
+    </button>
+
+  </div>
+
+  <script src="/Javascript/lightsOut.js"></script>
+</body>
+</html>
