@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+body {
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+  background-color:antiquewhite;
+}
+
+.option {
+  text-align: center;
+}
+
+.title{
+  font-size: 20px;
+  background-color: gold;
+  border-radius: 10px;
+  width:fit-content;
+  margin:auto;
+  padding:0px 20px;
+}
+
+.fa-regular{
+  padding-left:5px;
+}
+
+.rule{
+  font-size: 10px;
+  border: 5px double;
+  width: fit-content;
+  margin: auto;
+}
+
+.bold{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.hintOption{
+  font-size: 5px;
+  padding-left: 30%;
+  opacity: 0.4;
+}
+
+#timer{
+  padding:5px 8px;
+  text-align: center;
+  border:2px double;
+  width:fit-content;
+  margin:auto;
+}
+
+#level{
+  display:block;
+  margin: 5px auto;
+  /* セレクトボックス中央に配置 */
+}
+
+table {
+  margin:2px auto;
+  border-width: 3px;
+  border-radius: 10px;
+  padding:5px;
+  background-color:aliceblue;
+}
+
+td {
+  border-color: black;
+  border-width: 2px;
+  padding:5px;
+  border-radius: 10px;
+  transform: scale(1);
+}
+
+.button{
+  text-align: center;
+  padding:5px;
+}
+
+#start{
+  width:90px;
+  color:white;
+  background-color: darkorange;
+  border:none;
+  padding:8px;
+  border-radius:10px;
+  margin-right:5px;
+}
+
+#start:hover{
+  opacity:0.7;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+#start:active{
+  transform: translate(0, 2px);
+}
+
+.fa-solid {
+  padding-right: 7px;
+}
+
+#hint{
+  width:90px;
+  color: white;
+  background-color:green;
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+#hint:enabled:hover {
+  opacity: 0.7;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+#hint:enabled:active {
+  transform: translate(0, 2px);
+}
+#hint:disabled{
+  background-color: gray;
+}
+
+.fa-regular{
+  padding-right:5px;
+}
+
+#reset{
+  margin:10px;
+  width:90px;
+  color: white;
+  background-color:dodgerblue;
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+#reset:enabled:hover{
+  opacity: 0.7;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+#reset:enabled:active {
+  transform: translate(0, 2px);
+}
+
+#reset:disabled{
+  background-color: gray;
+}
