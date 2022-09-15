@@ -5,11 +5,10 @@ let inGame = false;
 const gameSize = 5;
 
 //ヒントを格納する配列
-let hints = new Array(25);
+let hints = [];
 
 //全てのチェックボックスを配列に格納
 const lightLists = Array.prototype.slice.call(document.getElementsByClassName("light"));
-
 
 //難易度選択から値を取得
 let select = document.getElementById("level");
@@ -54,14 +53,14 @@ function displayTime() {
 //難易度設定
 function selectLevel() {
   if (select.value == "hard") {
-    max = 25;
-    min = 16;
+    max = 29;
+    min = 20;
   } else if (select.value == "normal") {
-    max = 15;
-    min = 8;
+    max = 19;
+    min = 10;
   } else {
-    max = 7;
-    min = 2;
+    max = 9;
+    min = 3;
   }
 }
 
@@ -149,18 +148,12 @@ function reset() {
     lightLists[i].parentNode.style.cssText = "border-color: black;"
     lightLists[i].setAttribute("disabled", "disabled");
   }
+
+  //hints配列の中身をリセット
+  hints=[];
 }
 
-//ヒントボタンの動作
-function hint() {
-  //ヒントボタンを非活性化
-  hintButton.disabled = true;
-  //答えの重複を無くす
-  hints = Array.from(new Set(hints));
-  for (let i = 0; i < hints.length; i++){
-    lightLists[hints[i]].parentNode.style.cssText = "border-color:red; border-width: 2px;";
-  }
-}
+
 
 //ゲーム開始状態の時のみチェックボックスを活性化
 function disabledCheckBox() {
@@ -184,23 +177,23 @@ function disabledCheckBox() {
 function randomCheck() {
   let shuffleNumber = Math.floor(Math.random() * (max - min)) + min;
   //初期状態時にチェックするチェックボックスを決定
-  for (let i = 0; i <= shuffleNumber; i++) {
+  for (let i = 0; i < shuffleNumber; i++) {
     let shuffleCheck = Math.floor(Math.random() * 24);
     //答えをhintsに格納
     hints[i] = shuffleCheck;
     if (lightLists[shuffleCheck].checked) {
-        lightLists[shuffleCheck].checked = false;
-      } else {
-        lightLists[shuffleCheck].checked = true;
-      }
+      lightLists[shuffleCheck].checked = false;
+    } else {
+      lightLists[shuffleCheck].checked = true;
+    }
     clickCheckBox(shuffleCheck);
   }
-
 }
 
 //チェックボックスクリック時にindex番号をclickCheckBoxに渡す
 for (let i = 0; i < lightLists.length; i++){
   lightLists[i].onclick = () => {
+    hints[hints.length] = Number(i);
     clickCheckBox(i);
   }
 }
@@ -271,6 +264,8 @@ let clickCheckBox = (index) => {
       for (let i = 0; i < lightLists.length; i++){
         lightLists[i].parentNode.style.cssText = "border-color: black;"
       }
+      //hintsをリセット
+      hints = [];
 
       //時間リセット
       time.textContent = '00:00.000';
@@ -292,3 +287,40 @@ const gameClear = () => {
   }
   return true;
   }
+
+//ヒントボタンの動作
+function hint() {
+  //ヒントボタンを非活性化
+  hintButton.disabled = true;
+
+  //昇順にソート
+  hints = hints.sort(
+    function (a, b) {
+      return (a < b ? -1 : 1);
+  }
+  );
+  alert(hints);
+  //偶数回格納されている要素を削除
+  for (let i = 1; i <= hints.length; i++){
+    if (hints[i-1] == hints[i]) {
+      hints.splice(i-1, 2);
+    }
+  }
+  alert(hints);
+    //空値を削除して詰める
+  hints = hints.filter(Number.isFinite);
+  alert(hints);
+  for (let i = 1; i <= hints.length; i++){
+    if (hints[i-1] == hints[i]) {
+      hints.splice(i-1, 2);
+    }
+  }
+  alert(hints);
+    //空値を削除して詰める
+  hints = hints.filter(Number.isFinite);
+  alert(hints);
+  //
+  for (let i = 0; i < hints.length; i++){
+    lightLists[hints[i]].parentNode.style.cssText = "border-color:red; border-width: 2px;";
+  }
+}
