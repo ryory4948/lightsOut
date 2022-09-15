@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <!--タイトル＆ルール説明-->
   <div class="option">
     <div class="title">
         <p>
@@ -26,20 +27,23 @@
         全てのライトを消すことが出来たらクリア!
       </p>
     </div>
+    <!--ヒントボタンの説明-->
     <div class="hintOption">
       <p>※ヒントボタンを押すと・・・？</p>
     </div>
   </div>
 
-
+  <!--タイマー-->
   <div id="timer">00:00.000</div>
+  
+  <!--難易度選択-->
   <select id="level">
     <option value="hard">上級</option>
     <option value="normal" selected>中級</option>
     <option value="easy">初級</option>
   </select>
 
-
+  <!--ゲームテーブル-->
   <div class="gameTable">
     <table border="1">
       <tr>
@@ -79,16 +83,18 @@
       </tr>
     </table>
   </div>
-
+  <!--ボタン3種-->
   <div class="button">
+    <!--開始ボタン-->
     <button type="submit" value="start" onclick="start()" id ="start">
       <i class="fa-solid fa-play"></i>開始
     </button>
-
+    <!--ヒントボタン-->
     <button type="submit" onclick="hint()" id="hint">
       <i class="fa-solid fa-lightbulb"></i>ヒント
     </button>
     <br>
+    <!--最初からボタン-->
     <button type="submit" onclick="reset()" id="reset">
       <i class="fa-solid fa-rotate-right"></i>最初から
     </button>
