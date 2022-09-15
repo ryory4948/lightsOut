@@ -125,6 +125,39 @@ function start() {
     disabledCheckBox();
   }
 }
+//ヒントボタンの動作
+function hint() {
+  //ヒントボタンを非活性化
+  hintButton.disabled = true;
+
+  //昇順にソート
+  hints = hints.sort(
+    function (a, b) {
+      return (a < b ? -1 : 1);
+  }
+  );
+
+  //偶数回格納されている要素を削除
+  for (let i = 1; i <= hints.length; i++){
+    if (hints[i-1] == hints[i]) {
+      hints.splice(i-1, 2);
+    }
+  }
+  //空値を削除して詰める
+  hints = hints.filter(Number.isFinite);
+
+  for (let i = 1; i <= hints.length; i++){
+    if (hints[i-1] == hints[i]) {
+      hints.splice(i-1, 2);
+    }
+  }
+  hints = hints.filter(Number.isFinite);
+
+  //ヒントに該当するチェックボックスの枠線を赤くする
+  for (let i = 0; i < hints.length; i++){
+    lightLists[hints[i]].parentNode.style.cssText = "border-color:red;";
+  }
+}
 
 //最初からボタンの動作
 function reset() {
@@ -152,8 +185,6 @@ function reset() {
   //hints配列の中身をリセット
   hints=[];
 }
-
-
 
 //ゲーム開始状態の時のみチェックボックスを活性化
 function disabledCheckBox() {
@@ -193,8 +224,14 @@ function randomCheck() {
 //チェックボックスクリック時にindex番号をclickCheckBoxに渡す
 for (let i = 0; i < lightLists.length; i++){
   lightLists[i].onclick = () => {
-    hints[hints.length] = Number(i);
+    hints[hints.length] = i;
     clickCheckBox(i);
+    //クリックしたチェックボックスがヒントに該当していたら黒に戻す
+    let parent = lightLists[i].parentNode;
+    if (getComputedStyle(parent).borderColor == "rgb(255, 0, 0)") {
+      lightLists[i].parentNode.style.cssText = "border-color: black;"
+    }
+
   }
 }
 
@@ -287,40 +324,3 @@ const gameClear = () => {
   }
   return true;
   }
-
-//ヒントボタンの動作
-function hint() {
-  //ヒントボタンを非活性化
-  hintButton.disabled = true;
-
-  //昇順にソート
-  hints = hints.sort(
-    function (a, b) {
-      return (a < b ? -1 : 1);
-  }
-  );
-
-  //偶数回格納されている要素を削除
-  for (let i = 1; i <= hints.length; i++){
-    if (hints[i-1] == hints[i]) {
-      hints.splice(i-1, 2);
-    }
-  }
-
-    //空値を削除して詰める
-  hints = hints.filter(Number.isFinite);
-
-  for (let i = 1; i <= hints.length; i++){
-    if (hints[i-1] == hints[i]) {
-      hints.splice(i-1, 2);
-    }
-  }
-
-    //空値を削除して詰める
-  hints = hints.filter(Number.isFinite);
-
-  //
-  for (let i = 0; i < hints.length; i++){
-    lightLists[hints[i]].parentNode.style.cssText = "border-color:red; border-width: 2px;";
-  }
-}
