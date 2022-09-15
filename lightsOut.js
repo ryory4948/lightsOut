@@ -299,26 +299,26 @@ function hint() {
       return (a < b ? -1 : 1);
   }
   );
-  alert(hints);
+
   //偶数回格納されている要素を削除
   for (let i = 1; i <= hints.length; i++){
     if (hints[i-1] == hints[i]) {
       hints.splice(i-1, 2);
     }
   }
-  alert(hints);
+
     //空値を削除して詰める
   hints = hints.filter(Number.isFinite);
-  alert(hints);
+
   for (let i = 1; i <= hints.length; i++){
     if (hints[i-1] == hints[i]) {
       hints.splice(i-1, 2);
     }
   }
-  alert(hints);
+
     //空値を削除して詰める
   hints = hints.filter(Number.isFinite);
-  alert(hints);
+
   //
   for (let i = 0; i < hints.length; i++){
     lightLists[hints[i]].parentNode.style.cssText = "border-color:red; border-width: 2px;";
