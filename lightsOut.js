@@ -141,17 +141,9 @@ function hint() {
   for (let i = 1; i <= hints.length; i++){
     if (hints[i-1] == hints[i]) {
       hints.splice(i-1, 2);
+      i -= 2;
     }
   }
-  //空値を削除して詰める
-  hints = hints.filter(Number.isFinite);
-
-  for (let i = 1; i <= hints.length; i++){
-    if (hints[i-1] == hints[i]) {
-      hints.splice(i-1, 2);
-    }
-  }
-  hints = hints.filter(Number.isFinite);
 
   //ヒントに該当するチェックボックスの枠線を赤くする
   for (let i = 0; i < hints.length; i++){
