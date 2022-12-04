@@ -202,6 +202,7 @@ function randomCheck() {
   //初期状態時にチェックするチェックボックスを決定
   for (let i = 0; i < shuffleNumber; i++) {
     let shuffleCheck = Math.floor(Math.random() * 24);
+    
     //答えをhintsに格納
     hints[i] = shuffleCheck;
     if (lightLists[shuffleCheck].checked) {
