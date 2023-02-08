@@ -99,7 +99,7 @@ function start() {
     }
 
     //一時停止ボタンに変化
-    document.getElementById("start").innerHTML = '<i class="fa-solid fa-pause"></i>再開';
+    document.getElementById("start").innerHTML = '<i class="fa-solid fa-pause"></i>一時停止';
     document.getElementById("start").value = "stop";
 
     //チェックボックスを活性化
